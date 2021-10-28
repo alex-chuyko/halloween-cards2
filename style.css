@@ -1,0 +1,235 @@
+﻿@font-face {
+	font-family: 'OctoberCrow';
+	src: url('resources/fonts/October-Crow.woff') format('woff'),
+		url('resources/fonts/October\ Crow.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'WizardryNight';
+	src: url('resources/fonts/Wizardry-Night.woff') format('woff'),
+		url('resources/fonts/Wizardry\ Night.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'HalloweenMorning';
+	src: url('resources/fonts/Halloween-Morning.woff') format('woff'),
+		url('resources/fonts/Halloween\ Morning.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Psychopath';
+	src: url('resources/fonts/Psychopath.woff') format('woff'),
+		url('resources/fonts/Psychopath.ttf') format('truetype');
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes shake {
+	10%, 90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%, 80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%, 60% {
+		transform: translate3d(4px, 0, 0);
+	}
+}
+
+@keyframes shake2 {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column-reverse;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-image: url('resources/background.jpg');
+	background-size: cover;
+	margin: 0;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(3, 160px);
+	grid-template-rows: repeat(3, 200px);
+	grid-gap: 40px;
+	width: 580px;
+	height: 680px;
+	max-height: calc(100% - 40px);
+	overflow: auto;
+	padding: 20px;
+	position: relative;
+}
+
+.cards-container_shake {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+.card {
+	width: 160px;
+	height: 200px;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	perspective: 800px;
+	transition: .5s;
+}
+
+.card:hover:not(.card_opened) .card__front,
+.card:hover .card__back {
+	filter: brightness(1.1);
+	box-shadow: -1px 2px 3px 1px rgb(66 66 66 / 20%), 0 3px 8px 4px rgb(66 66 66 / 10%);
+}
+
+.card:hover:not(.card_opened) {
+	transform: scale(1.1);
+}
+
+.card.card_opened .card__front {
+	transform: rotateX(-180deg);
+	visibility: hidden;
+}
+
+.card.card_opened .card__back {
+	visibility: visible;
+	transform: rotateX(0deg);
+}
+
+.card.card_opened {
+	width: 400px;
+	height: 550px;
+}
+
+.card__front,
+.card__back {
+	width: 100%;
+	height: 100%;
+	border: 3px solid;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transition: ease-in-out 600ms;
+}
+
+.card__front {
+	border-color: #ce6e25;
+	transform: rotateX(0deg);
+	background: linear-gradient(-45deg, #ee7752, #35034c);
+	background-size: 300% 300%;
+	animation: gradient 6s ease infinite;
+}
+
+.card__back {
+	border-color: #000;
+	background-color: #ff732c;
+	visibility: hidden;
+	transform: rotateX(180deg);
+}
+
+.card__front-image {
+	width: 7rem;
+	position: absolute;
+	top: 1.2rem; /* 11% */
+}
+
+.card__front-title {
+	width: 7rem;
+	position: absolute;
+	bottom: 0.3rem; /* 5% */
+	right: 1rem; /* 7% */
+	font-family: 'OctoberCrow';
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	line-height: 24px;
+	color: #ebcd20; /*#ffd800;*/
+	text-shadow: -1px 0 #000000cc, 0 1px black, 1px 0 black, 0 -1px black;
+	text-align: center;
+}
+
+.card__back-wish {
+	--text-border-color: #a3a8926b;
+	font-family: 'WizardryNight';
+	font-weight: bold;
+	font-size: 35px;
+	line-height: 40px;
+	text-shadow: -1px 0 var(--text-border-color), 0 1px var(--text-border-color), 1px 0 var(--text-border-color), 0 -1px var(--text-border-color);
+	width: 100%;
+	max-height: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 25px;
+	text-align: center;
+	white-space: break-spaces;
+}
+
+.error {
+	--text-border-color: orange;
+	--text-border-size: 1px;
+	width: 650px;
+	height: 70px;
+	font-family: 'HalloweenMorning';
+	font-size: 156px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-align: center;
+	color: black ; /*#eb3232; #6c660f*/
+	text-shadow: calc(-1 * var(--text-border-size)) 0 var(--text-border-color), 0 var(--text-border-size) var(--text-border-color), var(--text-border-size) 0 var(--text-border-color), 0 calc(-1 * var(--text-border-size)) var(--text-border-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	visibility: hidden;
+	opacity: 0;
+	/* transform: scale(1.1); */
+	animation: shake2 1s ease infinite;
+	transition: visibility 0s linear 10s, opacity 0.33s linear;
+}
+
+.error.error_visible {
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+}
