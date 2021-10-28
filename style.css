@@ -223,9 +223,9 @@ body {
 	top: 50%;
 	visibility: hidden;
 	opacity: 0;
-	/* transform: scale(1.1); */
 	animation: shake2 1s ease infinite;
 	transition: visibility 0s linear 10s, opacity 0.33s linear;
+	pointer-events: none;
 }
 
 .error.error_visible {
