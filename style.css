@@ -22,6 +22,17 @@
 		url('resources/fonts/Psychopath.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'Rolling';
+	src: url('resources/fonts/JosefinSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Infinite_Stroke';
+	src: url('resources/fonts/Infinite_Stroke.ttf') format('truetype');
+}
+
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -70,7 +81,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
@@ -79,12 +90,19 @@ body {
 	margin: 0;
 }
 
+.page-title {
+	font-size: 85px;
+	font-family: 'Infinite_Stroke';
+	text-shadow: -1px 0 #000000cc, 0 1px black, 1px 0 black, 0 -1px black;
+	color: #ffd88e;
+}
+
 .cards-container {
 	display: grid;
-	grid-template-columns: repeat(3, 160px);
+	grid-template-columns: repeat(4, 160px);
 	grid-template-rows: repeat(3, 200px);
 	grid-gap: 40px;
-	width: 580px;
+	width: 770px;
 	height: 680px;
 	max-height: calc(100% - 40px);
 	overflow: auto;
@@ -153,16 +171,16 @@ body {
 }
 
 .card__front {
-	border-color: #ce6e25;
+	border-color: #84529c;
 	transform: rotateX(0deg);
-	background: linear-gradient(-45deg, #ee7752, #35034c);
+	background: linear-gradient(-45deg, #52c0ee, #ff59a0);
 	background-size: 300% 300%;
 	animation: gradient 6s ease infinite;
 }
 
 .card__back {
 	border-color: #000;
-	background-color: #ff732c;
+	background-color: #ff7dbc;
 	visibility: hidden;
 	transform: rotateX(180deg);
 }
@@ -170,29 +188,40 @@ body {
 .card__front-image {
 	width: 7rem;
 	position: absolute;
-	top: 1.2rem; /* 11% */
+	top: 2.2rem; /* 11% */
 }
 
 .card__front-title {
-	width: 7rem;
+	width: 100%;
 	position: absolute;
-	bottom: 0.3rem; /* 5% */
-	right: 1rem; /* 7% */
-	font-family: 'OctoberCrow';
+	bottom: 2rem; /* 5% */
+	font-family: 'Rolling';
 	font-size: 20px;
 	font-weight: bold;
-	letter-spacing: 2px;
 	line-height: 24px;
-	color: #ebcd20; /*#ffd800;*/
+	color: #3d0064; /*#ffd800;*/
+	text-shadow: -1px 0 #ffffffcc, 0 1px white, 1px 0 white, 0 -1px white;
+	text-align: center;
+}
+
+.card__front-title2 {
+	width: 7rem;
+	position: absolute;
+	bottom: 0.2rem; /* 5% */
+	font-family: 'Rolling';
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 24px;
+	color: white;
 	text-shadow: -1px 0 #000000cc, 0 1px black, 1px 0 black, 0 -1px black;
 	text-align: center;
 }
 
 .card__back-wish {
 	--text-border-color: #a3a8926b;
-	font-family: 'WizardryNight';
+	font-family: 'Rolling';
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 25px;
 	line-height: 40px;
 	text-shadow: -1px 0 var(--text-border-color), 0 1px var(--text-border-color), 1px 0 var(--text-border-color), 0 -1px var(--text-border-color);
 	width: 100%;
