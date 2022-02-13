@@ -24,12 +24,14 @@
 
 @font-face {
 	font-family: 'Rolling';
-	src: url('resources/fonts/JosefinSans-Regular.ttf') format('truetype');
+	src: url('resources/fonts/JosefinSans-Regular.woff') format('woff'),
+		url('resources/fonts/JosefinSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Infinite_Stroke';
-	src: url('resources/fonts/Infinite_Stroke.ttf') format('truetype');
+	src: url('resources/fonts/Infinite_Stroke.woff') format('woff'),
+		url('resources/fonts/Infinite_Stroke.ttf') format('truetype');
 }
 
 
